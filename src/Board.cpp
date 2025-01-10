@@ -1,4 +1,5 @@
 #include "Board.h"
+#include "globals.h"
 #include "raylib.h"
 #include <fstream>
 #include <iostream>
@@ -42,5 +43,11 @@ void Board::draw()
                 DrawRectangle(i * cell_size, j * cell_size, cell_size, cell_size, BLACK);
             }
         }
+    }
+
+    for (int i = 0; i < cell_count; i++)
+    {
+        DrawLine(0, i * cell_size, cell_size * cell_count, i * cell_size, {0, 0, 0, 32});
+        DrawLine(i * cell_size, 0, i * cell_size, cell_size * cell_count, {0, 0, 0, 32});
     }
 }

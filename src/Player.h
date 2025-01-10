@@ -1,17 +1,25 @@
 #pragma once
+#include "Board.h"
+#include "globals.h"
+#include <raylib.h>
+#include <utility>
 
 class Player
 {
   private:
-    static const int w = 12;
-    static const int h = 12;
+    Board *board = nullptr;
+
+    static const int w = cell_size / 4 * 3;
+    static const int h = cell_size / 4 * 3;
 
     float x = 300;
     float y = 300;
-    float angle = 0;
+    float angle = PI / 2 * 3;
 
     float moving_speed = 1.25;   // pixels per frame
     float rotating_speed = 0.05; // degrees pre frame
+
+    bool collisions(float new_x, float new_y);
 
   public:
     Player() {};
@@ -22,4 +30,9 @@ class Player
     void draw();
 
     void update();
+
+    void update_board(Board *pBoard)
+    {
+        board = pBoard;
+    };
 };

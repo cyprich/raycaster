@@ -6,6 +6,7 @@
 
 int main(int argc, char *argv[])
 {
+    // InitWindow(1024, 512, "raycaster");
     InitWindow(512, 512, "raycaster");
     SetTargetFPS(100);
 
@@ -13,6 +14,7 @@ int main(int argc, char *argv[])
 
     Board *b = new Board();
     Player *p = new Player();
+    p->update_board(b);
 
     while (!WindowShouldClose())
     {
